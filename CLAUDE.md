@@ -41,11 +41,39 @@ The configuration follows a modular structure:
 
 ## Key Features
 
-- **Leader key**: Space
+- **Leader key**: Space (set in init.lua before lazy.nvim loads)
 - **Plugin management**: lazy.nvim with automatic loading
 - **Theme**: Tokyo Night (moon variant) without cursorline
-- **Statusline**: Minimal lualine configuration
+- **Statusline**: Minimal lualine configuration with time display
 - **File navigation**: Telescope for fuzzy finding
 - **Syntax**: Treesitter for enhanced highlighting
 - **Git integration**: Gitsigns for git status in editor
-- **UI enhancements**: Noice for better notifications, indent guides
+- **UI enhancements**: Indent guides, which-key for keybinding help
+- **Line numbers**: Static line numbers (relative disabled)
+- **Editor**: Autopairs, commenting, surround operations
+
+## Current Configuration State
+
+### Fixed Issues
+- Leader keys are set in `init.lua` before lazy.nvim loads to avoid warnings
+- Fillchars options simplified to avoid invalid argument errors (removed foldsep, foldopen, foldclose)
+- Which-key updated to v3 configuration format using `spec` instead of `defaults`
+- Noice disabled due to compatibility issues
+- Telescope fzf extension loading wrapped in pcall to handle missing extension gracefully
+- Relative line numbers disabled to show only static line numbers
+
+### Core Keybindings (Space as leader)
+- **File Operations**: `<Space><Space>` find files, `<Space>ff` find files, `<Space>fr` recent files
+- **Search**: `<Space>/` live grep, `<Space>,` switch buffers
+- **Git**: `<Space>g*` various git operations via gitsigns
+- **Windows**: `<Space>w*` window management, `<Space>-` split below, `<Space>|` split right
+- **Buffers**: `<Space>bb` switch to other buffer, `Shift-H/L` prev/next buffer
+- **Save/Quit**: `<Space>w` save file, `<Space>q` quit all
+- **Lazy**: `<Space>ul` open lazy plugin manager
+
+### Plugin Configuration Notes
+- Telescope: Uses plenary.nvim dependency, fzf-native optional
+- Which-key: Uses new v3 spec format with group definitions
+- Gitsigns: Comprehensive git hunk operations with leader+gh prefix
+- Tokyo Night: Moon variant theme without cursor line highlighting
+- Lualine: Minimal statusline with diagnostics, git diff, and time display
