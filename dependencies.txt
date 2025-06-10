@@ -1,0 +1,62 @@
+# Neovim Configuration Dependencies
+# This file lists all external dependencies required for this Neovim configuration
+
+## Core Requirements
+neovim>=0.9.0
+git
+curl
+unzip
+
+## System Dependencies (for plugin functionality)
+# Required for telescope live_grep and file searching
+ripgrep
+fd-find
+
+# Required for telescope fzf-native extension (optional but recommended)
+make
+gcc
+cmake
+
+# Required for better file type detection and language support
+# Most systems have these, but listing for completeness
+python3
+nodejs
+npm
+
+## Package Manager Specific Names
+# Ubuntu/Debian (Node.js installed separately via snap or NodeSource)
+apt_packages=neovim,git,curl,unzip,ripgrep,fd-find,make,gcc,cmake,python3,xclip
+apt_nodejs=snap_install_node_--classic_OR_nodesource_repository
+
+# Fedora/RHEL/CentOS
+dnf_packages=neovim,git,curl,unzip,ripgrep,fd-find,make,gcc,cmake,python3,nodejs,npm
+
+# Arch Linux
+pacman_packages=neovim,git,curl,unzip,ripgrep,fd,make,gcc,cmake,python,nodejs,npm
+
+# macOS (Homebrew)
+brew_packages=neovim,git,curl,unzip,ripgrep,fd,make,gcc,cmake,python3,node
+
+# Alpine Linux
+apk_packages=neovim,git,curl,unzip,ripgrep,fd,make,gcc,cmake,python3,nodejs,npm
+
+## Optional Dependencies (for enhanced functionality)
+# For better clipboard support (Linux)
+xclip
+xsel
+wl-clipboard
+
+# For image preview support (if using image plugins in future)
+imagemagick
+
+# For better terminal support
+tmux
+
+## Notes
+# - fd-find might be packaged as 'fd' on some distributions
+# - ripgrep provides the 'rg' command used by telescope
+# - make/gcc/cmake are needed to build telescope-fzf-native extension
+# - nodejs/npm may be needed for future LSP server installations
+# - python3 is used by some plugins for enhanced functionality
+# - On Ubuntu/Debian, Node.js is installed via snap or NodeSource to avoid package conflicts
+# - The nodejs package from default Ubuntu repos often has dependency conflicts
